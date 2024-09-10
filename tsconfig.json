@@ -1,3 +1,11 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "strict": false,
+    "noImplicitAny": false,  // Opcional, si quieres desactivar los errores de tipos implícitos 'any'
+    "strictNullChecks": false,  // Opcional, desactiva las verificaciones de null/undefined
+    "strictPropertyInitialization": false,  // Desactiva inicialización estricta de propiedades
+    "target": "esnext",  // El objetivo de tu proyecto, puedes ajustarlo según sea necesario
+    "module": "esnext"
+  }
 }

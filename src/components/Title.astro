@@ -4,9 +4,9 @@
 </h1>
 
 <script>
-    const dynamicWord = document.getElementById('dynamic-word');
-    const lastText = document.getElementById('last-text');
-    const filler = document.querySelector('.filler');
+    const dynamicWord = document.getElementById('dynamic-word') as HTMLElement;
+    const lastText = document.getElementById('last-text') as HTMLElement;
+    const filler = document.querySelector('.filler') as HTMLElement;
 
     function glitchEffect() {
       // Mostrar el texto invertido brevemente (glitch)
