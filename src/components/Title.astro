@@ -1,0 +1,82 @@
+<h1 id="glitch-text" class="text-8xl font-semibold text-blue-500 uppercase font-custom">
+    <span id="last-text" class="text-blue-500">Last</span>
+    <span id="dynamic-word" class="text-8xl font-custom neon-text">Bet<span class="filler text-blue-500">. . .</span></span>
+</h1>
+
+<script>
+    const dynamicWord = document.getElementById('dynamic-word');
+    const lastText = document.getElementById('last-text');
+    const filler = document.querySelector('.filler');
+
+    function glitchEffect() {
+      // Mostrar el texto invertido brevemente (glitch)
+      dynamicWord.innerHTML = 'stake';
+      dynamicWord.style.color = '#ff0000'; // Mantén el rojo durante el glitch
+      dynamicWord.style.textShadow = '0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7), 0 0 30px rgba(255, 0, 0, 0.7)';
+      filler.style.display = 'none'; // Ocultar relleno temporalmente durante el glitch
+
+      // Cambiar a "Choice" en verde después del glitch
+      setTimeout(() => {
+        dynamicWord.innerHTML = 'Choice';
+        dynamicWord.style.color = '#00ff00'; // Verde
+        dynamicWord.style.textShadow = '0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(0, 255, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.7)';
+        filler.style.display = 'none'; // Mantener oculto después del glitch
+
+        // Iniciar la animación de titilación y glitch después de que aparezca "Choice"
+        dynamicWord.classList.add('glitch-choice');
+        lastText.classList.add('glitch-last'); // Aplicar el efecto al "Last" también
+      }, 200); // Duración del glitch antes de cambiar a verde
+    }
+
+    // Iniciar el texto con "Bet" en rojo y luego realizar el glitch después de 3 segundos
+    setTimeout(() => {
+      glitchEffect();
+    }, 3000);
+  </script>
+</Layout>
+
+<style>
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Neon animation */
+.neon-text {
+  animation: none; /* Desactivamos la animación inicial para hacer el control con JavaScript */
+}
+
+/* Efecto de glitch y titilación en "Choice" */
+.glitch-choice {
+  animation: glitch-blur 1s infinite alternate;
+}
+
+@keyframes glitch-blur {
+  0%, 50% {
+    text-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.7),
+      0 0 20px rgba(0, 255, 0, 0.7),
+      0 0 30px rgba(0, 255, 0, 0.7),
+      0 0 40px rgba(0, 255, 0, 0.7);
+    transform: scale(1);
+  }
+  50%, 100% {
+    text-shadow: 
+      0 0 30px rgba(0, 255, 0, 1),
+      0 0 40px rgba(0, 255, 0, 1),
+      0 0 40px rgba(0, 255, 0, 1);
+    transform: scale(1.02);
+  }
+}
+
+/* Efecto de glitch en "Last" */
+.glitch-last {
+  animation: glitch-last-effect 1.5s infinite alternate;
+}
+
+</style>
